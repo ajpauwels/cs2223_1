@@ -1,28 +1,8 @@
-import java.util.PriorityQueue;
 
 public class Trading {
-	private PriorityQueue<Order> buyPQ = new PriorityQueue<Order>();
-	private PriorityQueue<Order> sellPQ = new PriorityQueue<Order>();
 	
 	public static void main(String[] args) {
 		String[] inputs = StdIn.readAllLines();
-		for (String input : inputs) {
-			
-		}
-	}
-	
-	private Order createOrder(String input) {
-		boolean isBuy;
-		int price;
-		int quantity;
-		String[] split = input.split(" ");
-		isBuy = (split[0].equals("buy") ? true : false);
-		price = Integer.parseInt(split[1]);
-		quantity = Integer.parseInt(split[2]);
-		return (new Order(isBuy, price, quantity));
-	}
-	
-	private boolean checkEquilibrium() {
-		return false;
 	}
 }
+
