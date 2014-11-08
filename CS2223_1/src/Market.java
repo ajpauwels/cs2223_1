@@ -1,12 +1,17 @@
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class Market {
 	private PriorityQueue<Order> buyPQ;
 	private PriorityQueue<Order> sellPQ;
+	private Queue<Order> transactions;
 	
 	public Market(String[] inputs) {
 		buyPQ = new PriorityQueue<Order>();
 		sellPQ = new PriorityQueue<Order>();
+		transactions = new LinkedList<Order>();
+		
 		for (String input : inputs) {
 			String[] orderArray = input.split("\\s+");
 			Order order = new Order(orderArray[0], Integer.parseInt(orderArray[1]), Integer.parseInt(orderArray[2]));
@@ -19,13 +24,11 @@ public class Market {
 		}
 	}
 	
-	public void run(String[] input) {
-		
-	}
-	
 	private boolean checkEquilibrium() {
 		if (buyPQ == null || sellPQ == null) return false;
-		return false;
+		if (buyPQ.size() == 0 || sellPQ.size() == 0) return true;
+		else if (sellPQ.peek().getPrice() > buyPQ.peek().getPrice()) return true;
+		else return false;
 	}
 	
 	public void printTransactions() {
