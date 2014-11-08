@@ -6,21 +6,10 @@ public class Order implements Comparator<Order> {
 	private int price;
 	private int quantity;
 	
-	public Order(String input) {
-		createOrder(input);
-	}
-	
 	public Order(boolean isBuy, int price, int quantity) {
 		this.isBuy = isBuy;
 		this.price = price;
 		this.quantity = quantity;
-	}
-	
-	private void createOrder(String input) {
-		String[] split = input.split(" ");
-		isBuy = (split[0].equals("buy") ? true : false);
-		price = Integer.parseInt(split[1]);
-		quantity = Integer.parseInt(split[2]);
 	}
 	
 	public boolean isBuy() {
