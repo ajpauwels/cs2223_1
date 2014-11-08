@@ -4,10 +4,10 @@ public class Trading {
 	private PriorityQueue<Order> buyPQ = new PriorityQueue<Order>();
 	private PriorityQueue<Order> sellPQ = new PriorityQueue<Order>();
 	
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		String[] inputs = StdIn.readAllLines();
 		for (String input : inputs) {
-			
+			createOrder(input);
 		}
 	}
 	
