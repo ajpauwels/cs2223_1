@@ -1,8 +1,5 @@
-import java.util.PriorityQueue;
 
 public class Trading {
-	private PriorityQueue<Order> buyPQ = new PriorityQueue<Order>();
-	private PriorityQueue<Order> sellPQ = new PriorityQueue<Order>();
 	
 	public void main(String[] args) {
 		String[] inputs = StdIn.readAllLines();
@@ -26,3 +23,4 @@ public class Trading {
 		return false;
 	}
 }
+
