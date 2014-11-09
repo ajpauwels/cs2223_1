@@ -30,9 +30,8 @@ public class Order implements Comparator<Order> {
 
 	@Override
 	public int compare(Order order0, Order order1) {
-		int toReturn = 0;
-		if (order0.price > order1.price) toReturn = 1;
-		//else if (order0.price > order1.price)
-		return toReturn;
+		if (order0.price > order1.price) return (isBuy ? 1 : -1);
+		else if (order0.price < order1.price) return (isBuy ? -1 : 1);
+		else return 0;
 	}
 }
