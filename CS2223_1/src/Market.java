@@ -1,15 +1,21 @@
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 import java.util.Queue;
-
+/*
+ * Trading - class representing market, handling orders and checks if market is in equilibrium
+ * @author Alexandre Pauwels
+ * @author Ethan Coeytaux
+ */
 public class Market {
 	private PriorityQueue<Order> buyPQ;
 	private PriorityQueue<Order> sellPQ;
-	private Queue<String> transactions;
+	private LinkedList<String> orders;
+	private LinkedList<String> transactions;
 	
 	public Market(String[] inputs) {
 		buyPQ = new PriorityQueue<Order>();
 		sellPQ = new PriorityQueue<Order>();
+		orders = new LinkedList<String>();
 		transactions = new LinkedList<String>();
 		run(inputs);
 	}
@@ -29,6 +35,7 @@ public class Market {
 		} else {
 			sellPQ.add(order);
 		}
+		orders.add(order.getPrice() + ", " + order.getQuantity());
 	}
 	
 	private boolean makeTrades() {
@@ -48,8 +55,37 @@ public class Market {
 	}
 	
 	public void printTransactions() {
-		for (String output : transactions) {
-			System.out.print("(" + output + "), ");
+		boolean filled = false;
+		String inputsOutput = "on input [";
+		for (String output : orders) {
+			inputsOutput += "(" + output + "), ";
+			filled = true;
 		}
+		inputsOutput = inputsOutput.substring(0, inputsOutput.length() - (filled ? 2 : 0)) + "]";
+		filled = false;
+		String transactionsOutput = "the sequence of sales is: [";
+		for (String output : transactions) {
+			transactionsOutput += "(" + output + "), ";
+			filled = true;
+		}
+		transactionsOutput = transactionsOutput.substring(0, transactionsOutput.length() - (filled ? 2 : 0)) + "]";
+		filled = false;
+		String sellsOutput = "the outstanding sell orders are: [";
+		for (Order order : sellPQ) {
+			sellsOutput += "(" + order.getPrice() + ", " + order.getQuantity() + "), ";
+			filled = true;
+		}
+		sellsOutput = sellsOutput.substring(0, sellsOutput.length() - (filled ? 2 : 0)) + "]";
+		filled = false;
+		String buysOutput = "the outstanding buy orders are: [";
+		for (Order order : buyPQ) {
+			buysOutput += "(" + order.getPrice() + ", " + order.getQuantity() + "), ";
+			filled = true;
+		}
+		buysOutput = buysOutput.substring(0, buysOutput.length() - (filled ? 2 : 0)) + "]";
+		System.out.println(inputsOutput);
+		System.out.println(transactionsOutput);
+		System.out.println(sellsOutput);
+		System.out.println(buysOutput);
 	}
 }

@@ -1,6 +1,8 @@
-
-import java.util.Comparator;
-
+/*
+ * Order - represents an order
+ * @author Alexandre Pauwels
+ * @author Ethan Coeytaux
+ */
 public class Order implements Comparable<Order> {
 	private boolean isBuy;
 	private int price;
