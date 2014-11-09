@@ -11,17 +11,6 @@ public class Market {
 		buyPQ = new PriorityQueue<Order>();
 		sellPQ = new PriorityQueue<Order>();
 		transactions = new LinkedList<Order>();
-		
-		for (String input : inputs) {
-			String[] orderArray = input.split("\\s+");
-			Order order = new Order(orderArray[0], Integer.parseInt(orderArray[1]), Integer.parseInt(orderArray[2]));
-			
-			if (order.isBuy()) {
-				buyPQ.add(order);
-			} else {
-				sellPQ.add(order);
-			}
-		}
 	}
 	
 	private boolean checkEquilibrium() {
