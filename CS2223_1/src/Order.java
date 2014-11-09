@@ -1,7 +1,7 @@
 
 import java.util.Comparator;
 
-public class Order implements Comparator<Order> {
+public class Order implements Comparable<Order> {
 	private boolean isBuy;
 	private int price;
 	private int quantity;
@@ -27,11 +27,15 @@ public class Order implements Comparator<Order> {
 	public void substractQuantity(int sub) {
 		quantity -= sub;
 	}
-
+	
+	public String toString() {
+		return (isBuy ? "buy" : "sell") + ", " + price + ", " + quantity;
+	}
+	
 	@Override
-	public int compare(Order order0, Order order1) {
-		if (order0.price > order1.price) return (isBuy ? 1 : -1);
-		else if (order0.price < order1.price) return (isBuy ? -1 : 1);
+	public int compareTo(Order other) {
+		if (price < other.price) return (isBuy ? 1 : -1);
+		else if (price > other.price) return (isBuy ? -1 : 1);
 		else return 0;
 	}
 }

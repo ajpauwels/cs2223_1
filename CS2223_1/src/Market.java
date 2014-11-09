@@ -24,7 +24,6 @@ public class Market {
 	private void createOrder(String input) {
 		String[] orderArray = input.split("\\s+");
 		Order order = new Order(orderArray[0], Integer.parseInt(orderArray[1]), Integer.parseInt(orderArray[2]));
-		
 		if (order.isBuy()) {
 			buyPQ.add(order);
 		} else {
@@ -34,17 +33,16 @@ public class Market {
 	
 	private boolean makeTrades() {
 		if (buyPQ.size() == 0 || sellPQ.size() == 0) return false;
-		
 		Order maxBuy = buyPQ.peek();
 		Order minSell = sellPQ.peek();
 		if (maxBuy.getPrice() >= minSell.getPrice()) {
-			int price = maxBuy.getPrice();
+			int price = minSell.getPrice();
 			int quantity = (maxBuy.getQuantity() < minSell.getQuantity() ? maxBuy.getQuantity() : minSell.getQuantity());
 			maxBuy.substractQuantity(quantity);
 			minSell.substractQuantity(quantity);
 			if (maxBuy.getQuantity() == 0) buyPQ.remove();
 			if (minSell.getQuantity() == 0) sellPQ.remove();
-			transactions.add(price + " " + quantity);
+			transactions.add(price + ", " + quantity);
 			return true;
 		} else return false;
 	}
