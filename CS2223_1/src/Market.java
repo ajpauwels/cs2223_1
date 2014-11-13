@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 import java.util.PriorityQueue;
-/*
+/**
  * Trading - class representing market, handling orders and checks if market is in equilibrium
  * @author Alexandre Pauwels
  * @author Ethan Coeytaux
@@ -11,7 +11,7 @@ public class Market {
 	private LinkedList<Order> orders; //keeps track of orders for final output
 	private LinkedList<String> transactions; //keeps track of transactions for final output
 
-	/*
+	/**
 	 * Constructor for Market class
 	 * @param String[] inputs - all the orders to be processed still in String form
 	 */
@@ -23,7 +23,7 @@ public class Market {
 		run(inputs);
 	}
 
-	/*
+	/**
 	 * Runs the market model, creating orders and making the necessary trades between orders
 	 * @param String[] inputs - all the orders to be processed still in String form
 	 */
@@ -34,7 +34,7 @@ public class Market {
 		}
 	}
 
-	/*
+	/**
 	 * Creates an Order from a String input, extracting the data from the String
 	 * @param input - String form of order
 	 */
@@ -73,7 +73,7 @@ public class Market {
 		return true;
 	}
 
-	/*
+	/**
 	 * If a trade can be made, processes trade and updates orders in the PriorityQueues
 	 * Called recursively, returns when no trades can be made
 	 */
@@ -94,7 +94,7 @@ public class Market {
 		}
 	}
 
-	/*
+	/**
 	 * Prints out output
 	 */
 	public void printTransactions() {

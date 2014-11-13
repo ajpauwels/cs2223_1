@@ -1,4 +1,4 @@
-/*
+/**
  * Order - represents an order
  * @author Alexandre Pauwels
  * @author Ethan Coeytaux
@@ -9,7 +9,7 @@ public class Order implements Comparable<Order> {
 	private int quantity;
 	private int originalQuantity;
 
-	/*
+	/**
 	 * Constructor for Order
 	 * @param String type - type of order
 	 * @param int price - price of stock
@@ -22,35 +22,35 @@ public class Order implements Comparable<Order> {
 		this.originalQuantity = this.quantity;
 	}
 
-	/*
+	/**
 	 * @return if order is a buy order or not
 	 */
 	public boolean isBuy() {
 		return isBuy;
 	}
 
-	/*
+	/**
 	 * @return price of stock
 	 */
 	public int getPrice() {
 		return price;
 	}
 
-	/*
+	/**
 	 * @return quantity of stock
 	 */
 	public int getQuantity() {
 		return quantity;
 	}
 
-	/*
+	/**
 	 * @param int sub - number of stocks to substract
 	 */
 	public void substractQuantity(int sub) {
 		quantity -= sub;
 	}
 
-	/*
+	/**
 	 * @return String version of order info
 	 */
 	@Override
@@ -58,7 +58,7 @@ public class Order implements Comparable<Order> {
 		return (isBuy ? "buy" : "sell") + ", " + price + ", " + originalQuantity;
 	}
 
-	/*
+	/**
 	 * @return 1 if considered larger, -1 if smaller, 0 if equal
 	 */
 	@Override
