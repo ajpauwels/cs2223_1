@@ -7,6 +7,7 @@ public class Order implements Comparable<Order> {
 	private boolean isBuy;
 	private int price;
 	private int quantity;
+	private int originalQuantity;
 
 	/*
 	 * Constructor for Order
@@ -18,6 +19,7 @@ public class Order implements Comparable<Order> {
 		this.isBuy = type.equals("buy") ? true : false;
 		this.price = price;
 		this.quantity = quantity;
+		this.originalQuantity = this.quantity;
 	}
 
 	/*
@@ -53,7 +55,7 @@ public class Order implements Comparable<Order> {
 	 */
 	@Override
 	public String toString() {
-		return (isBuy ? "buy" : "sell") + ", " + price + ", " + quantity;
+		return (isBuy ? "buy" : "sell") + ", " + price + ", " + originalQuantity;
 	}
 
 	/*

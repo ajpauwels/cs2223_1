@@ -40,13 +40,37 @@ public class Market {
 	 */
 	private void createOrder(String input) {
 		String[] orderArray = input.split("\\s+"); //splits from whitespace
-		Order order = new Order(orderArray[0], Integer.parseInt(orderArray[1]), Integer.parseInt(orderArray[2]));
-		if (order.isBuy()) { //adds order to appropriate PriorityQueue
-			buyPQ.add(order);
+		if (checkInput(orderArray)) {
+			Order order = new Order(orderArray[0], Integer.parseInt(orderArray[1]), Integer.parseInt(orderArray[2]));
+			if (order.isBuy()) { //adds order to appropriate PriorityQueue
+				buyPQ.add(order);
+			} else {
+				sellPQ.add(order);
+			}
+			orders.add(order); //adds to order LinkedList for output
 		} else {
-			sellPQ.add(order);
+			System.out.println("One of your buy/sell orders was formatted incorrectly, please double-check your inputs and try again!");
+			System.exit(0);
 		}
-		orders.add(order); //adds to order LinkedList for output
+	}
+	
+	private boolean checkInput(String[] orderArray) {
+		if (orderArray.length != 3) return false;
+		if (!orderArray[0].equals("buy") && !orderArray[0].equals("sell")) return false;
+		
+		try {
+			Integer.parseInt(orderArray[1]);
+		} catch(NumberFormatException e) {
+			return false;
+		}
+		
+		try {
+			Integer.parseInt(orderArray[2]);
+		} catch(NumberFormatException e) {
+			return false;
+		}
+		
+		return true;
 	}
 
 	/*
